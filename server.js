@@ -10,9 +10,13 @@ app.use(express.json());
 
 // Cria uma nova instância do cliente com as flags de Puppeteer
 const client = new Client({
-    authStrategy: new LocalAuth(),
+    authStrategy: new LocalAuth({
+        clientId: "client-one", // Identifique a sessão para reuso
+        dataPath: "./whatsapp-session" // Armazene os dados de autenticação localmente
+    }),
     puppeteer: {
-        args: ['--no-sandbox', '--disable-setuid-sandbox']  // Adiciona as flags necessárias aqui
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: true, // Rodar em modo headless no Render
     }
 });
 

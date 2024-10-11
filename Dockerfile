@@ -1,5 +1,5 @@
 # Usar uma imagem oficial do Node.js como base
-FROM node:16
+FROM node:20
 
 # Definir o diretório de trabalho no contêiner
 WORKDIR /usr/src/app
@@ -49,4 +49,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando para rodar a aplicação
-CMD [ "npm", "start", "--no-sandbox" ]
+CMD [ "npm", "start" ]
